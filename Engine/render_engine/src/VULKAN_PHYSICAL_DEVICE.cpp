@@ -94,7 +94,7 @@ void VULKAN_PHYSICAL_DEVICE_PRINTABLE_META_DATA::PRINT_META_INFO_DBG()
     DEBUG_LOG(std::string("Device Name: " + this->deviceName));
     DEBUG_LOG(std::string("Driver Name: " + this->driverName));
     DEBUG_LOG(std::string("Driver Info: " + this->driverInfo));
-    DEBUG_LOG(std::string("API Version: " + this->apiVersion));
+    DEBUG_LOG(std::string("Vulkan API Version: " + this->apiVersion));
     std::cout << "------------DEVICE-INFORMATION-END------------" << std::endl;
     std::cout << std::endl;
     #endif
