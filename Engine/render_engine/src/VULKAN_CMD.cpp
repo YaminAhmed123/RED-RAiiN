@@ -104,7 +104,7 @@ void VULKAN_CMD::RECORD_CMD_BUFFER_GRAPHICS(VkCommandBuffer& CMD_BUFFER, uint32_
     vkCmdSetScissor(CMD_BUFFER, 0, 1, &scissor);
 
     vkCmdBindPipeline(CMD_BUFFER, VK_PIPELINE_BIND_POINT_GRAPHICS, PIPELINE.GRAPHICS_PIPELINE);
-    VkBuffer VK_BUFFERS[] = {VK_BUFFER.VERTEX_BUFFER};
+    VkBuffer VK_BUFFERS[] = {VK_BUFFER.BUFFER[0]};
     VkDeviceSize OFFSETS[] = {0};
     vkCmdBindVertexBuffers(CMD_BUFFER, 0, 1, VK_BUFFERS, OFFSETS);
     vkCmdDraw(CMD_BUFFER, 3, 1, 0, 0);

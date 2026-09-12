@@ -22,15 +22,42 @@ class RE2_VK_BUFFER{
     private:
     VULKAN_LOGICAL_DEVICE LGD;
     VULKAN_PHYSICAL_DEVICE PHD;
-    VkDeviceMemory VERTEX_BUFFER_MEMORY;
 
-    void SETUP_ALLOCATE_MEMORY(VULKAN_LOGICAL_DEVICE LGD,VULKAN_PHYSICAL_DEVICE PHD);
-    void WRITE_DATA_TO_MEMORY(void* DATA, size_t SIZE);
+
+    void SETUP_ALLOCATE_MEMORY(
+        VULKAN_LOGICAL_DEVICE LGD,
+        VULKAN_PHYSICAL_DEVICE PHD,
+        VkBufferUsageFlags USAGE,
+        VkDeviceMemory& VERTEX_BUFFER_MEMORY,
+        VkBuffer& VERTEX_BUFFER
+    );
+
+    void CREATE_BUFFER(                 // NOTE: creates a generic Buffer
+        VkDeviceSize SIZE,
+        VkBufferUsageFlags USAGE,
+        VkMemoryPropertyFlags PROPS,
+        VkBuffer& BUFFER,
+        VkDeviceMemory& BUFFER_MEMORY
+    );
+
+    void CREATE_VERTEX_BUFFER(          // NOTE: creates a buffer with optimal memory (most likely VRAM) to store vertexes inside it.
+        void *DATA,
+        VkDeviceSize SIZE,
+        VkBuffer& BUFFER,
+        VkDeviceMemory& BUFFER_MEMORY
+    );
+
+    void WRITE_BUFFER(
+        void* DATA,
+        size_t SIZE,
+        VkDeviceMemory& BUFFER_MEMORY
+    );
 
     public:
-    VkBuffer VERTEX_BUFFER;
+    std::vector<VkDeviceMemory> BUFFER_MEMORY;
+    std::vector<VkBuffer> BUFFER;
+
     void INIT(void* DATA, size_t SIZE, VULKAN_LOGICAL_DEVICE LGD, VULKAN_PHYSICAL_DEVICE PHD);
-    void FREE(VULKAN_LOGICAL_DEVICE LGD);
     void FREE();
 
 
